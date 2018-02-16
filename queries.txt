@@ -7,3 +7,7 @@ ADWARE OR PUP OR DETECTED_PUP_APP
 (threatIndicators:UNKNOWN_APP OR processEffectiveReputation:UNKNOWN OR processReputationProperty:UNKNOWN) AND (threatIndicators:INJECT_CODE)
  
 Powershell.exe AND (INJECT_CODE OR RAM_SCRAPING OR SCRAP_PROCESS_MEMORY)
+
+(applicationName:Winword.exe OR parentName:Winword.exe) AND (targetCommandLine:powershell.exe OR interpreterName:powershell.exe OR targetCommandLine:cscript.exe OR interpreterName:cscript.exe OR targetCommandLine:wscript.exe OR interpreterName:wscript.exe OR targetCommandLine:cmd.exe OR interpreterName:cmd.exe)
+
+(processEffectiveReputation:NOT_LISTED OR processReputationProperty:NOT_LISTED OR processEffectiveReputation:UNKNOWN OR processReputationProperty:UNKNOWN) AND (threatIndicators:KNOWN_RANSOMWARE OR threatIndicators:DATA_TO_ENCRYPTION OR (threatIndicators:SET_SYSTEM_FILE AND threatIndicators:KERNEL_ACCESS))
