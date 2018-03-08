@@ -1,6 +1,9 @@
+#Any kind o action by CBD
 POLICY_TERMINATE OR POLICY_DENY
  
+#ADWARE 
 ADWARE OR PUP OR DETECTED_PUP_APP
+ 
  
 (UNKNOWN_APP OR NOT_LISTED) AND (RAM_SCRAPING OR SCRAPE_PROCESS_MEMORY)
  
@@ -11,3 +14,29 @@ Powershell.exe AND (INJECT_CODE OR RAM_SCRAPING OR SCRAP_PROCESS_MEMORY)
 (applicationName:Winword.exe OR parentName:Winword.exe) AND (targetCommandLine:powershell.exe OR interpreterName:powershell.exe OR targetCommandLine:cscript.exe OR interpreterName:cscript.exe OR targetCommandLine:wscript.exe OR interpreterName:wscript.exe OR targetCommandLine:cmd.exe OR interpreterName:cmd.exe)
 
 (processEffectiveReputation:NOT_LISTED OR processReputationProperty:NOT_LISTED OR processEffectiveReputation:UNKNOWN OR processReputationProperty:UNKNOWN) AND (threatIndicators:KNOWN_RANSOMWARE OR threatIndicators:DATA_TO_ENCRYPTION OR (threatIndicators:SET_SYSTEM_FILE AND threatIndicators:KERNEL_ACCESS))
+
+
+(appname or ext) AND ACTIVE_*
+
+ram scraping : app name or extension AND (RAM_SCRAPING OR SCRAP_PROCESS_MEMORY)
+ 
+
+Executes code from memory : Executable Memory
+ 
+
+Invokes an untrusted process : (UNKNOWN_APP OR NOT_LISTED) AND APPNAME
+ 
+
+
+Invokes a command interpreter : (applicationName:Winword.exe OR parentName:Winword.exe) AND (targetCommandLine:powershell.exe OR interpreterName:powershell.exe OR targetCommandLine:cscript.exe OR interpreterName:cscript.exe OR targetCommandLine:wscript.exe OR interpreterName:wscript.exe OR targetCommandLine:cmd.exe OR interpreterName:cmd.exe)
+ 
+
+
+
+Performs ransomware-like behavior :threatIndicators:KNOWN_RANSOMWARE OR threatIndicators:DATA_TO_ENCRYPTION OR (threatIndicators:SET_SYSTEM_FILE AND threatIndicators:KERNEL_ACCESS)
+ 
+
+
+Executes a fileless script Injects code or modifies memory of another process : fileless
+
+https://community.carbonblack.com/docs/DOC-7247
